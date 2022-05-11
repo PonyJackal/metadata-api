@@ -2,9 +2,6 @@ import express from 'express';
 import cors from 'cors';
 // import cookieParser from 'cookie-parser';
 
-import countryRoute from '../routes/country.route';
-import teamRoute from '../routes/team.route';
-import pilotRoute from '../routes/pilot.route';
 import tokenRoute from '../routes/token.route';
 /*
 import mangaRoute from '../routes/manga.route.js';
@@ -27,9 +24,6 @@ app.use('/files', express.static('uploads'));
 app.use(cors(corsOptionsDelegate));
 app.use(limiter); // limiting all requests
 //app.use(response);
-app.use('/countries', countryRoute);
-app.use('/pilots', pilotRoute);
-app.use('/teams', teamRoute);
 app.use('/token', tokenRoute);
 
 export { app };

@@ -1,9 +1,12 @@
 import { Request, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import knex from '../database/db';
+import Token from '../database/models/Token';
+import Attribute from '../database/models/Attribute';
+import Metadata from '../database/models/Metadata';
 
 async function create(req: Request, res: Response) {
-    const { id, description, external_url, image, name } = req.body;
+    const { id, description, external_url, image, name, attributes } = req.body;
     return knex('tokens')
         .insert({
             _id: uuidv4(),
@@ -24,17 +27,21 @@ async function create(req: Request, res: Response) {
 async function findOne(req: Request, res: Response) {
     const { id } = req.params;
     try {
-        const result = await knex
+        const result: Token[] = await knex
             .select(['id', 'description', 'external_url', 'image', 'name'])
             .from('tokens')
             .where('id', id?.toString());
 
-        const attributes = await knex
+        if (result.length == 0) {
+            return res.status(404).json({ message: 'token not found' });
+        }
+
+        const attributes: Attribute[] = await knex
             .select(['display_type', 'trait_type', 'value'])
             .from('attributes')
             .where('token_id', id?.toString());
 
-        const tokenMetadata = {
+        const tokenMetadata: Metadata = {
             ...result[0],
             attributes,
         };
