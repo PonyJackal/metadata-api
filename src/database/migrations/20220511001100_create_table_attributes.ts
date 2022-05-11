@@ -8,7 +8,13 @@ export async function up(knex: Knex): Promise<void> {
         table.string('value').notNullable();
         table.string('display_type');
 
-        table.integer('token_id').unsigned().references('id').inTable('tokens');
+        table
+            .integer('token_id')
+            .unsigned()
+            .references('id')
+            .inTable('tokens')
+            .onUpdate('CASCADE') // If Article PK is changed, update FK as well.
+            .onDelete('CASCADE');
 
         table.timestamps(true, true);
     });
