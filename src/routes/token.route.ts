@@ -8,4 +8,8 @@ router.get('/:id', TokenControler.findOne);
 
 router.post('/', TokenControler.create);
 
+router.put('/:id', TokenControler.update);
+
+router.delete('/:id', TokenControler.remove);
+
 export default router;
