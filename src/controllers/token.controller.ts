@@ -24,9 +24,22 @@ async function create(req: Request, res: Response) {
 async function findOne(req: Request, res: Response) {
     const { id } = req.params;
     try {
-        const result = await knex('tokens').where('id', id?.toString());
+        const result = await knex
+            .select(['id', 'description', 'external_url', 'image', 'name'])
+            .from('tokens')
+            .where('id', id?.toString());
 
-        return res.status(200).json(result);
+        const attributes = await knex
+            .select(['display_type', 'trait_type', 'value'])
+            .from('attributes')
+            .where('token_id', id?.toString());
+
+        const tokenMetadata = {
+            ...result[0],
+            attributes,
+        };
+
+        return res.status(200).json(tokenMetadata);
     } catch (err) {
         console.log(err);
         return res.status(400).json({ err: err, message: 'Error' });
