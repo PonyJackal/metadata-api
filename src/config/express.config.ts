@@ -5,6 +5,7 @@ import cors from 'cors';
 import countryRoute from '../routes/country.route';
 import teamRoute from '../routes/team.route';
 import pilotRoute from '../routes/pilot.route';
+import tokenRoute from '../routes/token.route';
 /*
 import mangaRoute from '../routes/manga.route.js';
 import reviewRoute from '../routes/review.route.js';
@@ -29,5 +30,6 @@ app.use(limiter); // limiting all requests
 app.use('/countries', countryRoute);
 app.use('/pilots', pilotRoute);
 app.use('/teams', teamRoute);
+app.use('/token', tokenRoute);
 
 export { app };
