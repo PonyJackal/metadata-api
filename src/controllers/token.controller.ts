@@ -1,11 +1,13 @@
 import { Request, Response } from 'express';
-
+import { v4 as uuidv4 } from 'uuid';
 import knex from '../database/db';
 
 async function create(req: Request, res: Response) {
-    const { description, external_url, image, name } = req.body;
+    const { id, description, external_url, image, name } = req.body;
     return knex('tokens')
         .insert({
+            _id: uuidv4(),
+            id,
             description,
             external_url,
             image,

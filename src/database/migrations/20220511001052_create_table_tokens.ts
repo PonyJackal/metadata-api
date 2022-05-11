@@ -2,7 +2,8 @@ import { Knex } from 'knex';
 
 export async function up(knex: Knex): Promise<void> {
     return knex.schema.createTable('tokens', (table: Knex.TableBuilder) => {
-        table.increments('id').primary();
+        table.uuid('_id').primary().notNullable().unique();
+        table.integer('id').notNullable().unique();
         table.string('description').notNullable();
         table.string('external_url').notNullable();
         table.string('image').notNullable();
@@ -11,6 +12,9 @@ export async function up(knex: Knex): Promise<void> {
     });
 }
 
-export async function down(knex: Knex): Promise<void> {
-    return knex.schema.dropTable('tokens');
+export async function down(knex: Knex): Promise<void[]> {
+    return Promise.all([
+        knex.schema.dropTable('attributes'),
+        knex.schema.dropTable('tokens'),
+    ]);
 }
