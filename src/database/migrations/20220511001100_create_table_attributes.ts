@@ -3,13 +3,13 @@ import { Knex } from "knex";
 
 export async function up(knex: Knex): Promise<void> {
     return knex.schema.createTable('attributes', (table: Knex.TableBuilder) => {
-        table.uuid('id').primary().notNullable().unique();
+        table.integer('id').primary().notNullable().unique();
         table.string('trait_type').notNullable();
         table.string('value').notNullable();
         table.string('display_type').notNullable();
 
         table
-            .uuid('token_id')
+            .integer('token_id')
             .notNullable()
             .references('id')
             .inTable('tokens');

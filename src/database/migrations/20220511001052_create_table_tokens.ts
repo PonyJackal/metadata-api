@@ -3,7 +3,7 @@ import { Knex } from "knex";
 
 export async function up(knex: Knex): Promise<void> {
     return knex.schema.createTable('tokens', (table: Knex.TableBuilder) => {
-        table.uuid('id').primary().notNullable().unique();
+        table.integer('id').primary().notNullable().unique();
         table.string('description').notNullable();
         table.string('external_url').notNullable();
         table.string('image').notNullable();
