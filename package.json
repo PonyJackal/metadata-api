@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "knex:seed:make": "NODE_ENV=dev knex --knexfile src/database/config/migration.config.ts seed:make -x ts",
+    "knex:seed:run": "NODE_ENV=dev knex --knexfile src/database/config/migration.config.ts seed:run",
     "knex:migrate:make": "NODE_ENV=dev knex --knexfile src/database/config/migration.config.ts migrate:make -x ts",
     "knex:migrate:latest": "NODE_ENV=dev knex --knexfile src/database/config/migration.config.ts migrate:latest",
     "knex:migrate:rollback": "NODE_ENV=dev knex --knexfile src/database/config/migration.config.ts migrate:rollback",

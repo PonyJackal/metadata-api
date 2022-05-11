@@ -1,12 +1,11 @@
-import { Knex } from "knex";
-
+import { Knex } from 'knex';
 
 export async function up(knex: Knex): Promise<void> {
     return knex.schema.createTable('attributes', (table: Knex.TableBuilder) => {
-        table.integer('id').primary().notNullable().unique();
+        table.increments('id');
         table.string('trait_type').notNullable();
         table.string('value').notNullable();
-        table.string('display_type').notNullable();
+        table.string('display_type');
 
         table
             .integer('token_id')
@@ -18,7 +17,4 @@ export async function up(knex: Knex): Promise<void> {
     });
 }
 
-
-export async function down(knex: Knex): Promise<void> {
-}
-
+export async function down(knex: Knex): Promise<void> {}
