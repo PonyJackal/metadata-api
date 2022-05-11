@@ -16,8 +16,18 @@ async function create(req: Request, res: Response) {
             image,
             name,
         })
-        .then(result => {
-            return res.status(201).json({ message: 'Token added!!' });
+        .returning('id')
+        .then(id => {
+            const attributesData = attributes.map((ele: Attribute) => ({
+                ...ele,
+                token_id: id[0],
+                _id: uuidv4(),
+            }));
+            return knex('attributes')
+                .insert(attributesData)
+                .then(result => {
+                    return res.status(201).json({ message: 'Token added!!' });
+                });
         })
         .catch(err => {
             return res.status(400).json({ error: err });

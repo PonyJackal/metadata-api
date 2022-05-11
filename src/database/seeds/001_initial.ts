@@ -48,42 +48,36 @@ export async function seed(knex: Knex): Promise<void> {
     const attributes = [
         {
             _id: uuidv4(),
-            id: 0,
             trait_type: 'Base',
             value: 'Starfish',
             token_id: tokens[random(4)].id,
         },
         {
             _id: uuidv4(),
-            id: 1,
             trait_type: 'Eyes',
             value: 'Big',
             token_id: tokens[random(4)].id,
         },
         {
             _id: uuidv4(),
-            id: 2,
             trait_type: 'Mouth',
             value: 'Surprised',
             token_id: tokens[random(4)].id,
         },
         {
             _id: uuidv4(),
-            id: 3,
             trait_type: 'Stamina',
             value: 'Big',
             token_id: tokens[random(4)].id,
         },
         {
             _id: uuidv4(),
-            id: 4,
             trait_type: 'Personality',
             value: 'Sad',
             token_id: tokens[random(4)].id,
         },
         {
             _id: uuidv4(),
-            id: 5,
             trait_type: 'Aqua Power',
             value: '40',
             display_type: 'boost_number',
@@ -91,7 +85,6 @@ export async function seed(knex: Knex): Promise<void> {
         },
         {
             _id: uuidv4(),
-            id: 6,
             trait_type: 'Stamina Increase',
             value: '10',
             display_type: 'boost_percentage',
@@ -99,7 +92,6 @@ export async function seed(knex: Knex): Promise<void> {
         },
         {
             _id: uuidv4(),
-            id: 7,
             trait_type: 'Generation',
             value: '2',
             display_type: 'number',
@@ -107,35 +99,30 @@ export async function seed(knex: Knex): Promise<void> {
         },
         {
             _id: uuidv4(),
-            id: 8,
             trait_type: 'Base',
             value: 'Starfish',
             token_id: tokens[random(4)].id,
         },
         {
             _id: uuidv4(),
-            id: 9,
             trait_type: 'Mouth',
             value: 'Surprised',
             token_id: tokens[random(4)].id,
         },
         {
             _id: uuidv4(),
-            id: 10,
             trait_type: 'Stamina',
             value: 'Big',
             token_id: tokens[random(4)].id,
         },
         {
             _id: uuidv4(),
-            id: 11,
             trait_type: 'Personality',
             value: 'Sad',
             token_id: tokens[random(4)].id,
         },
         {
             _id: uuidv4(),
-            id: 12,
             trait_type: 'Aqua Power',
             value: '40',
             display_type: 'boost_number',
@@ -143,7 +130,6 @@ export async function seed(knex: Knex): Promise<void> {
         },
         {
             _id: uuidv4(),
-            id: 13,
             trait_type: 'Stamina Increase',
             value: '10',
             display_type: 'boost_percentage',
@@ -151,7 +137,6 @@ export async function seed(knex: Knex): Promise<void> {
         },
         {
             _id: uuidv4(),
-            id: 14,
             trait_type: 'Generation',
             value: '2',
             display_type: 'number',
@@ -159,7 +144,6 @@ export async function seed(knex: Knex): Promise<void> {
         },
         {
             _id: uuidv4(),
-            id: 15,
             trait_type: 'Eyes',
             value: 'Big',
             token_id: tokens[random(4)].id,
